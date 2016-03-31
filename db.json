@@ -1,0 +1,60 @@
+{
+  "friends": [
+    {
+      "Name": "Roberto",
+      "Hobby": "Watching chickens",
+      "Age": "21",
+      "Phone": "33 14 15 44 77",
+      "Address": "Av. de los Pollos #23"
+    },
+    {
+      "Name": "Pablo",
+      "Hobby": "Programming",
+      "Age": "21",
+      "Phone": "33 24 15 66 43",
+      "Address": "Av. de los Leprechauns #53"
+    },
+    {
+      "Name": "Edy",
+      "Hobby": "Trabuqueando",
+      "Age": "26",
+      "Phone": "33 32 87 45 63",
+      "Address": "Av. de los Trabucos #41"
+    },
+    {
+      "Name": "Emmanuel",
+      "Hobby": "Hot cakes",
+      "Age": "21",
+      "Phone": "33 45 25 68 79",
+      "Address": "Av. de los Ursulas #11"
+    },
+    {
+      "Name": "Manolo",
+      "Hobby": "Cromagnear",
+      "Age": "21",
+      "Phone": "33 33 12 58 77",
+      "Address": "Av. de los Brillos #23"
+    },
+    {
+      "Name": "Andrés",
+      "Hobby": "Smooking weed",
+      "Age": "21",
+      "Phone": "33 56 15 44 77",
+      "Address": "Av. de los Negros #88"
+    },
+    {
+      "Name": "Diego",
+      "Hobby": "Hacking Nasa",
+      "Age": "21",
+      "Phone": "33 12 15 33 21",
+      "Address": "Av. de los Mandiles #45"
+    },
+    {
+      "Name": "Enciso",
+      "Hobby": "Agente de Cambio",
+      "Age": "21",
+      "Phone": "33 14 32 45 15",
+      "Address": "Av. del Mandril #98"
+    }
+  ]
+}
