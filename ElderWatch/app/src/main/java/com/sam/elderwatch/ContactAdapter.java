@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -52,6 +53,7 @@ public class ContactAdapter extends BaseAdapter {
 
         TextView name = (TextView) convertView.findViewById(R.id.textView13);
         TextView number = (TextView) convertView.findViewById(R.id.textView23);
+        //new DownloadImageTask((ImageView) convertView.findViewById(R.id.thumbnailView)).execute(videos.get(position).getThumbnail());
 
         name.setText(database.findRecord(position + 1 + "")[0]);
         number.setText(database.findRecord(position + 1 + "")[1]);

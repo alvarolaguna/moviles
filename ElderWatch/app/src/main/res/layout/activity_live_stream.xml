@@ -7,37 +7,45 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sam.elderwatch.LiveStreamActivity"
-    android:background="#988170">
+    tools:context="com.sam.elderwatch.LiveStreamActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Feed"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="#ffffff" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView4"
+        android:background="#988170"
+        android:layout_alignParentTop="true">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/conf"
-        android:onClick="editMyInfoClick" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/conf"
+            android:onClick="editMyInfoClick" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView3"
-        android:src="@drawable/not"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Feed"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#988170"
+            android:textColor="#ffffff" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/not"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView5"
+            android:layout_toEndOf="@+id/textView5" />
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -88,7 +96,8 @@
         android:src="@drawable/contacts"
         android:layout_alignLeft="@+id/imageView5"
         android:layout_alignStart="@+id/imageView5"
-        android:onClick="goContactsClick" />
+        android:onClick="goContactsClick"
+        android:background="#988170" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -99,7 +108,7 @@
         android:layout_toRightOf="@+id/imageView12"
         android:layout_toEndOf="@+id/imageView12"
         android:onClick="logoutClick"
-        android:background="#ffffff" />
+        android:background="#988170" />
 
     <WebView
         android:layout_width="fill_parent"
@@ -108,8 +117,8 @@
         android:layout_below="@+id/imageView15"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/imageView15"
-        android:layout_alignEnd="@+id/imageView15" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <VideoView
         android:layout_width="200dp"
