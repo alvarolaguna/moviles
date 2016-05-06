@@ -62,6 +62,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
     private StreamFragment streamFragment;
     private android.support.v4.app.FragmentManager fm;
     Firebase ref;
+    String user = "";
 
     /*
     private static final ScheduledExecutorService worker =
@@ -86,18 +87,14 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         videos = new ArrayList<MyVideo>();
          /*
         videos.add(new MyVideo());
-        videos.get(0).setUrl("http://i.istockimg.com/video_passthrough/60847888/153/60847888.mp4");
-        videos.get(0).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/Capture3.PNG");
-        videos.get(0).setCause("caida");
-        videos.get(0).setDate("19-02-2015");
+
 
         videos.add(new MyVideo());
-        videos.get(1).setUrl("http://techslides.com/demos/sample-videos/small.mp4");
-        videos.get(1).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture1.PNG");
-        videos.get(1).setCause("caida");
-        videos.get(1).setDate("19-02-2015");
+        ;
         */
 
+        videos.add(new MyVideo());
+        videos.add(new MyVideo());
         videos.add(new MyVideo());
         videos.add(new MyVideo());
 
@@ -108,20 +105,23 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         }
 
         Intent myIntent = getIntent();
-        String user = myIntent.getStringExtra("user");
+        user = myIntent.getStringExtra("user");
 
         System.out.println("user is" + user);
 
-        if(user.equals("a"))
-        {
-            ref = new Firebase("https://elderwatch.firebaseio.com/users/user1/videos");
+        if(user!= null){
+            if(user.equals("a"))
+            {
+                ref = new Firebase("https://elderwatch.firebaseio.com/users/user1/videos");
+            }
+            else if(user.equals("b")){
+                ref = new Firebase("https://elderwatch.firebaseio.com/users/user2/videos");
+            }
+            else{
+                ref = new Firebase("https://elderwatch.firebaseio.com/users/userDefault/videos");
+            }
         }
-        else if(user.equals("b")){
-            ref = new Firebase("https://elderwatch.firebaseio.com/users/user2/videos");
-        }
-        else{
-            ref = new Firebase("https://elderwatch.firebaseio.com/users/userDefault/videos");
-        }
+
 
 
 
@@ -231,6 +231,16 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
                 System.out.println("The read failed: " + firebaseError.getMessage());
             }
         });
+
+        videos.get(2).setUrl("http://i.istockimg.com/video_passthrough/60847888/153/60847888.mp4");
+        videos.get(2).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture1.PNG");
+        videos.get(2).setCause("caida");
+        videos.get(2).setDate("19-02-2015");
+
+        videos.get(3).setUrl("http://techslides.com/demos/sample-videos/small.mp4");
+        videos.get(3).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/Capture3.PNG");
+        videos.get(3).setCause("desmayo");
+        videos.get(3).setDate("19-02-2015");
 
         videoview = (VideoView) findViewById(R.id.videoView);
         System.out.println(videos);

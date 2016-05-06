@@ -40,10 +40,11 @@ public class LoginActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase("https://elderwatch.firebaseio.com/");
         userPressed = passPressed = false;
-        myPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        //myPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        /*
         myUser.setText("a@gmail.com");
         myPass.setText("123");
-        /*
+
         myUser.setText("b@gmail.com");
         myPass.setText("123");
         */
