@@ -40,8 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase("https://elderwatch.firebaseio.com/");
         userPressed = passPressed = false;
+        myPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         myUser.setText("a@gmail.com");
         myPass.setText("123");
+        /*
+        myUser.setText("b@gmail.com");
+        myPass.setText("123");
+        */
     }
 
     public void eraseFieldUser(View v){
@@ -81,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
                 Toast.makeText(getApplicationContext(), "Login successfull", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, LiveStreamActivity.class);
+                intent.putExtra("user", myUser.getText().toString().split("@")[0]);
                 startActivity(intent);
             }
 

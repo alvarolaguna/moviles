@@ -25,6 +25,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -60,6 +61,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
     private VideoFragment videoFragment;
     private StreamFragment streamFragment;
     private android.support.v4.app.FragmentManager fm;
+    Firebase ref;
 
     /*
     private static final ScheduledExecutorService worker =
@@ -75,16 +77,17 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_live_stream);
         Firebase.setAndroidContext(this);
 
+
         fm = getSupportFragmentManager();
         streamPressed();
         //testView = (ImageView)findViewById(R.id.imagePrueba);
 
         videoURL = new ArrayList<String>();
         videos = new ArrayList<MyVideo>();
-
+         /*
         videos.add(new MyVideo());
         videos.get(0).setUrl("http://i.istockimg.com/video_passthrough/60847888/153/60847888.mp4");
-        videos.get(0).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture3.PNG");
+        videos.get(0).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/Capture3.PNG");
         videos.get(0).setCause("caida");
         videos.get(0).setDate("19-02-2015");
 
@@ -93,11 +96,35 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         videos.get(1).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture1.PNG");
         videos.get(1).setCause("caida");
         videos.get(1).setDate("19-02-2015");
+        */
 
         videos.add(new MyVideo());
         videos.add(new MyVideo());
 
-        Firebase ref = new Firebase("https://elderwatch.firebaseio.com/videos");
+        Firebase authRef = new Firebase("https://elderwatch.firebaseio.com/");
+        AuthData authData = authRef .getAuth();
+        if (authData != null) {
+            System.out.println("Authenticated user with uid:" +  authData.getUid());
+        }
+
+        Intent myIntent = getIntent();
+        String user = myIntent.getStringExtra("user");
+
+        System.out.println("user is" + user);
+
+        if(user.equals("a"))
+        {
+            ref = new Firebase("https://elderwatch.firebaseio.com/users/user1/videos");
+        }
+        else if(user.equals("b")){
+            ref = new Firebase("https://elderwatch.firebaseio.com/users/user2/videos");
+        }
+        else{
+            ref = new Firebase("https://elderwatch.firebaseio.com/users/userDefault/videos");
+        }
+
+
+
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -119,7 +146,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("url").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(2).setUrl(snapshot.getValue().toString());
+                videos.get(0).setUrl(snapshot.getValue().toString());
             }
 
             @Override
@@ -130,7 +157,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("thumbnail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(2).setThumbnail(snapshot.getValue().toString());
+                videos.get(0).setThumbnail(snapshot.getValue().toString());
             }
 
             @Override
@@ -141,7 +168,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("causa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(2).setCause(snapshot.getValue().toString());
+                videos.get(0).setCause(snapshot.getValue().toString());
             }
 
             @Override
@@ -152,7 +179,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("fecha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(2).setDate(snapshot.getValue().toString());
+                videos.get(0).setDate(snapshot.getValue().toString());
             }
 
             @Override
@@ -164,7 +191,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("url").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(3).setUrl(snapshot.getValue().toString());
+                videos.get(1).setUrl(snapshot.getValue().toString());
             }
 
             @Override
@@ -175,7 +202,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("thumbnail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(3).setThumbnail(snapshot.getValue().toString());
+                videos.get(1).setThumbnail(snapshot.getValue().toString());
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -185,7 +212,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("causa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(3).setCause(snapshot.getValue().toString());
+                videos.get(1).setCause(snapshot.getValue().toString());
 
             }
             @Override
@@ -196,7 +223,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("fecha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(3).setDate(snapshot.getValue().toString());
+                videos.get(1).setDate(snapshot.getValue().toString());
             }
 
             @Override
