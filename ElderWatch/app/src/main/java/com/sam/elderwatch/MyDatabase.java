@@ -34,7 +34,7 @@ public class MyDatabase extends SQLiteOpenHelper{
         String create = "CREATE TABLE " +
                 TABLE +
                 "(" + ID +
-                " INTEGER PRIMARY KEY, " +
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NAME + " TEXT, " + NUMBER + " VARCHAR(15))";
         db.execSQL(create);
     }

@@ -35,7 +35,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="#988170"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:onClick="streamPressed" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -47,13 +48,20 @@
             android:layout_toEndOf="@+id/textView5" />
     </RelativeLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/frameLayout"
+        android:layout_below="@+id/imageView15" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView5"
         android:src="@drawable/mic"
-        android:layout_marginBottom="113dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/frameLayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -64,7 +72,7 @@
         android:text="Tiempo sin Actividad:"
         android:id="@+id/textView4"
         android:background="#ffffff"
-        android:layout_below="@+id/webView"
+        android:layout_below="@+id/frameLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -87,7 +95,8 @@
         android:background="#ffffff"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/imageView5" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -109,34 +118,5 @@
         android:layout_toEndOf="@+id/imageView12"
         android:onClick="logoutClick"
         android:background="#988170" />
-
-    <WebView
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:id="@+id/webView"
-        android:layout_below="@+id/imageView15"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <VideoView
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/videoView"
-        android:layout_alignBottom="@+id/imageView5"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/textView5" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Video"
-        android:id="@+id/buttonVideo"
-        android:layout_below="@+id/textView5"
-        android:onClick="loadVideo"
-        android:layout_alignBottom="@+id/imageView5"
-        android:layout_toLeftOf="@+id/videoView"
-        android:layout_toStartOf="@+id/videoView" />
 
 </RelativeLayout>

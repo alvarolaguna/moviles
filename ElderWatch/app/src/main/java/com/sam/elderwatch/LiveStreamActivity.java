@@ -12,6 +12,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,8 +45,6 @@ import java.util.concurrent.TimeUnit;
 
 public class LiveStreamActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-
-    VideoDatabase videoDatabase;
     VideoAdapter myAdapter;
     ListView list;
     Boolean visited = false;
@@ -53,11 +52,15 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
     ProgressDialog pDialog;
     VideoView videoview;
     String VideoURL = "http://www.androidbegin.com/tutorial/AndroidCommercial.3gp";
-    WebView wv;
-    static String streamUrl = "http://192.168.1.68:8080/browserfs.html";
+
     ImageView imageView, testView;
     ArrayList<String> videoURL;
     ArrayList<MyVideo> videos;
+    private boolean videoPressed, streamPressed;
+    private VideoFragment videoFragment;
+    private StreamFragment streamFragment;
+    private android.support.v4.app.FragmentManager fm;
+
     /*
     private static final ScheduledExecutorService worker =
             Executors.newSingleThreadScheduledExecutor();
@@ -71,17 +74,29 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_stream);
         Firebase.setAndroidContext(this);
-        wv = (WebView)findViewById(R.id.webView);
-        wv.loadUrl(streamUrl);
-        videoDatabase = new VideoDatabase(this);
 
+        fm = getSupportFragmentManager();
+        streamPressed();
         //testView = (ImageView)findViewById(R.id.imagePrueba);
-        videoDatabase.saveRecord("Caida", "Hace 4 horas");
-        videoDatabase.saveRecord("Desmayo", "Hace 3 días");
-        videoDatabase.saveRecord("Caida", "Hace 2 semanas");
 
         videoURL = new ArrayList<String>();
         videos = new ArrayList<MyVideo>();
+
+        videos.add(new MyVideo());
+        videos.get(0).setUrl("http://i.istockimg.com/video_passthrough/60847888/153/60847888.mp4");
+        videos.get(0).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture3.PNG");
+        videos.get(0).setCause("caida");
+        videos.get(0).setDate("19-02-2015");
+
+        videos.add(new MyVideo());
+        videos.get(1).setUrl("http://techslides.com/demos/sample-videos/small.mp4");
+        videos.get(1).setThumbnail("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture1.PNG");
+        videos.get(1).setCause("caida");
+        videos.get(1).setDate("19-02-2015");
+
+        videos.add(new MyVideo());
+        videos.add(new MyVideo());
+
         Firebase ref = new Firebase("https://elderwatch.firebaseio.com/videos");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,33 +111,15 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
             }
         });
 
+
         Firebase video1 = ref.child("video1");
-
-        /*
-        alansRef.child("fullName").setValue("Alan Turing");
-        alansRef.child("birthYear").setValue(1912);
-        */
-        video1.child("url").setValue("http://techslides.com/demos/sample-videos/small.mp4");
-        video1.child("thumbnail").setValue("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture1.PNG");
-        video1.child("causa").setValue("caida");
-        video1.child("fecha").setValue("19-02-2015");
-        videos.add(new MyVideo());
-
         Firebase video2 = ref.child("video2");
-        video2.child("url").setValue("http://www.androidbegin.com/tutorial/AndroidCommercial.3gp");
-        video2.child("thumbnail").setValue("https://raw.githubusercontent.com/alvarolaguna/moviles/master/capture2.PNG");
-        video2.child("causa").setValue("desmayo");
-        video2.child("fecha").setValue("24-04-2015");
-        videos.add(new MyVideo());
 
         // Attach an listener to read the data at our posts reference
         video1.child("url").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(0).setUrl(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
-
+                videos.get(2).setUrl(snapshot.getValue().toString());
             }
 
             @Override
@@ -133,9 +130,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("thumbnail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(0).setThumbnail(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
+                videos.get(2).setThumbnail(snapshot.getValue().toString());
             }
 
             @Override
@@ -146,10 +141,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("causa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(0).setCause(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
-
+                videos.get(2).setCause(snapshot.getValue().toString());
             }
 
             @Override
@@ -160,10 +152,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video1.child("fecha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(0).setDate(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
-
+                videos.get(2).setDate(snapshot.getValue().toString());
             }
 
             @Override
@@ -175,10 +164,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("url").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(1).setUrl(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
-
+                videos.get(3).setUrl(snapshot.getValue().toString());
             }
 
             @Override
@@ -189,9 +175,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("thumbnail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(1).setThumbnail(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
+                videos.get(3).setThumbnail(snapshot.getValue().toString());
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -201,9 +185,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("causa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(1).setCause(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
+                videos.get(3).setCause(snapshot.getValue().toString());
 
             }
             @Override
@@ -214,10 +196,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         video2.child("fecha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                videos.get(1).setDate(snapshot.getValue().toString());
-                videoURL.add(snapshot.getValue().toString());
-                //testView.setImageBitmap(BitmapFactory.decodeByteArray(snapshot.getValue()));
-
+                videos.get(3).setDate(snapshot.getValue().toString());
             }
 
             @Override
@@ -234,52 +213,34 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         list.setOnItemClickListener(this);
     }
 
-    public void loadVideo(View v){
-
-        //System.out.println("videoURL "+videos.get(count).getUrl());
-        pDialog = new ProgressDialog(LiveStreamActivity.this);
-        // Set progressbar title
-        pDialog.setTitle("Cargando Streaming de Cámaras");
-        // Set progressbar message
-        pDialog.setMessage("Buffering...");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        // Show progressbar
-        pDialog.show();
-
-        try {
-            // Start the MediaController
-            MediaController mediacontroller = new MediaController(
-                    LiveStreamActivity.this);
-            mediacontroller.setAnchorView(videoview);
-            // Get the URL from String VideoURL
-            Uri video = Uri.parse( videos.get(videoCount).getUrl());
-            videoview.setMediaController(mediacontroller);
-            videoview.setVideoURI(video);
-
-        } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-            e.printStackTrace();
-        }
-
-        videoview.requestFocus();
-        videoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            // Close the progress bar and play the video
-            public void onPrepared(MediaPlayer mp) {
-                pDialog.dismiss();
-                videoview.start();
-            }
-        });
-        if(videoCount == videoURL.size()-1) videoCount = 0;
-        else{
-            videoCount++;
+    public void streamPressed(View v){
+        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+        if(!streamPressed){
+            streamPressed = true;
+            videoPressed = false;
+            ft.replace(R.id.frameLayout, streamFragment, "streamFragment");
+            ft.commit();
         }
     }
 
-    public void eraseData(){
-        videoDatabase.deleteRecord("1");
-        videoDatabase.deleteRecord("2");
-        videoDatabase.deleteRecord("3");
+    public void streamPressed(){
+        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+        if(!streamPressed){
+            streamPressed = true;
+            videoPressed = false;
+            streamFragment = streamFragment.newInstance();
+            ft.add(R.id.frameLayout, streamFragment ,"hobbyFragment");
+            ft.commit();
+        }
+    }
+
+    public void videoPressed(String url){
+        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+        videoPressed = true;
+        streamPressed = false;
+        videoFragment = videoFragment.newInstance(url);
+        ft.replace(R.id.frameLayout, videoFragment, "videoFragment");
+        ft.commit();
     }
 
     public void editMyInfoClick(View v){
@@ -289,7 +250,6 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         if(true){
             Toast.makeText(getApplicationContext(), "Edit Customer Info", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MyInfoActivity.class);
-            eraseData();
             startActivity(intent);
         }
 
@@ -303,7 +263,6 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(getApplicationContext(), "Contacts Info", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ContactsActivity.class);
             intent.putExtra("result", "0");
-            eraseData();
             startActivity(intent);
         }
 
@@ -317,56 +276,16 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(getApplicationContext(), "Logout successfull", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            eraseData();
             startActivity(intent);
         }
 
     }
 
-    public void loadVideo(int pos){
-        //provicional
-        pos %= 2;
-        System.out.println("count "+count+"");
-        System.out.println("videoURL ARRAY"+videoURL.get(0));
-        pDialog = new ProgressDialog(LiveStreamActivity.this);
-        // Set progressbar title
-        pDialog.setTitle("Cargando Streaming de Cámaras");
-        // Set progressbar message
-        pDialog.setMessage("Buffering...");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        // Show progressbar
-        pDialog.show();
-
-        try {
-            // Start the MediaController
-            MediaController mediacontroller = new MediaController(
-                    LiveStreamActivity.this);
-            mediacontroller.setAnchorView(videoview);
-            // Get the URL from String VideoURL
-            Uri video = Uri.parse( videos.get(pos).getUrl());
-            videoview.setMediaController(mediacontroller);
-            videoview.setVideoURI(video);
-
-        } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-            e.printStackTrace();
-        }
-
-        videoview.requestFocus();
-        videoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            // Close the progress bar and play the video
-            public void onPrepared(MediaPlayer mp) {
-                pDialog.dismiss();
-                videoview.start();
-            }
-        });
-    }
-
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        loadVideo(position);
+        videoPressed(videos.get(position).getUrl()+"");
+        //loadVideo(position);
     }
 }
 
