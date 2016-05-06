@@ -21,7 +21,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
     MyDatabase db;
     ContactAdapter myAdapter;
     ListView list;
-    String name, phone;
+    String name, phone, user;
     ArrayList<Contact> contacts;
     int count = 0;
 
@@ -77,6 +77,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
         Intent myIntent = getIntent();
         name = myIntent.getStringExtra("name");
         phone = myIntent.getStringExtra("phone");
+        user = myIntent.getStringExtra("user");
         System.out.println("primer prueba " + name);
         if(myIntent.getStringExtra("result").equals("1")){
             String id = myIntent.getStringExtra("id");
@@ -125,6 +126,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
         if(true){
             Toast.makeText(getApplicationContext(), "Going to Livestream", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LiveStreamActivity.class);
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 
@@ -139,6 +141,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
             Intent intent = new Intent(this, EditContact.class);
             intent.putExtra("type","add");
             intent.putExtra("count",count+"");
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 
@@ -156,6 +159,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
             intent.putExtra("name", tmp[0]);
             intent.putExtra("phone", tmp[1]);
             intent.putExtra("count",count+"");
+            intent.putExtra("user",user);
             startActivity(intent);
         }
     }

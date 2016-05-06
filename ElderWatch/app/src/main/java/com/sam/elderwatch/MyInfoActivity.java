@@ -24,6 +24,7 @@ public class MyInfoActivity extends AppCompatActivity {
     EditText myUser, myPass;
     private final String FILE = "myProperties.xml";
     Properties properties;
+    String user;
 
 
     @Override
@@ -38,7 +39,8 @@ public class MyInfoActivity extends AppCompatActivity {
 
         File file = new File(getFilesDir(), FILE);
         properties = new Properties();
-
+        Intent mintent = getIntent();
+        user = mintent.getStringExtra("user");
         try {
 
             if(file.exists()){
@@ -113,6 +115,7 @@ public class MyInfoActivity extends AppCompatActivity {
             savePersonalInfo();
             Toast.makeText(getApplicationContext(), "Going to Livestream", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LiveStreamActivity.class);
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 

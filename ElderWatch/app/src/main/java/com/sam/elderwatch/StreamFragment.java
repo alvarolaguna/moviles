@@ -28,7 +28,7 @@ public class StreamFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private WebView wv;
-    private static String streamUrl = "http://192.168.1.73:8080/browserfs.html";
+    private static String streamUrl = "http://10.43.36.2:8080/browserfs.html";
 
     private OnFragmentInteractionListener mListener;
 

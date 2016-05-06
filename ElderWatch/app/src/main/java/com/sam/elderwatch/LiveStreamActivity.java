@@ -287,6 +287,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
         if(true){
             Toast.makeText(getApplicationContext(), "Edit Customer Info", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MyInfoActivity.class);
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 
@@ -300,6 +301,7 @@ public class LiveStreamActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(getApplicationContext(), "Contacts Info", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ContactsActivity.class);
             intent.putExtra("result", "0");
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 

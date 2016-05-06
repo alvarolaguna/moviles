@@ -12,7 +12,7 @@ import com.firebase.client.Firebase;
 
 public class EditContact extends AppCompatActivity {
 
-    String id, type;
+    String id, type, user;
     EditText name, phone;
     int count;
 
@@ -23,6 +23,7 @@ public class EditContact extends AppCompatActivity {
         name = (EditText)findViewById(R.id.nameEt);
         phone = (EditText)findViewById(R.id.phoneEt);
         Intent intent = getIntent();
+        user = intent.getStringExtra("user");
         id = intent.getStringExtra("id");
         type = intent.getStringExtra("type");
         count = Integer.parseInt(intent.getStringExtra("count"));
@@ -42,6 +43,7 @@ public class EditContact extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Contact Unmodified" + id, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ContactsActivity.class);
             intent.putExtra("result", "3");
+            intent.putExtra("user",user);
             //intent.putExtra("count",count+"");
             startActivity(intent);
         }
@@ -57,7 +59,7 @@ public class EditContact extends AppCompatActivity {
             Intent intent = new Intent(this, ContactsActivity.class);
             intent.putExtra("result", "1");
             intent.putExtra("id", id);
-
+            intent.putExtra("user",user);
             startActivity(intent);
 
         }
@@ -79,6 +81,7 @@ public class EditContact extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), type, Toast.LENGTH_SHORT).show();
             intent.putExtra("id", id);
             intent.putExtra("count",count+"");
+            intent.putExtra("user",user);
             startActivity(intent);
         }
 
