@@ -1,14 +1,14 @@
 [
   {
-	"name": "Generations",
+	"name": "generations",
     "img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/canada.jpg"
   },
   {
-    "name": "Applications",
+    "name": "applications",
     "img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/alps.jpg"
   },
   {
-	"name": "Assessments",
+	"name": "assessments",
 	"img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/elk.jpg"
   }
 ]
