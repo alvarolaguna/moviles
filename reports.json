@@ -2,21 +2,25 @@
 	{
 		"id": 0,
         "name": "Juan",
-        "appDate": 1420816800000		
+        "appDate": 1420816800000,
+		"url": "https://pbs.twimg.com/profile_images/731449492780646400/X0FNbdJD.jpg"
 	},
 	{
 		"id": 1,
         "name": "Maria",
-        "appDate": 1310669017		
+        "appDate": 1310669017,
+		"url": "http://wisconsindailyindependent.com/wp-content/uploads/2014/12/gray-wolf.png"
 	},
 	{
 		"id": 2,
         "name": "Roberto",
-        "appDate": 1310669017		
+        "appDate": 1310669017,
+		"url": "http://images.forbes.com/media/2010/02/16/0216_siberian-tiger_400x400.jpg"
 	},
 	{
 		"id": 3,
         "name": "Mariana",
-        "appDate": 1310669017		
+        "appDate": 1310669017,
+		"url":"https://pbs.twimg.com/profile_images/2218381869/purple_butterfly_400x400.jpg"
 	}
 ]
