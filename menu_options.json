@@ -1,14 +1,14 @@
 [
   {
 	"name": "generations",
-    "img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/canada.jpg"
+    "img": "http://dev.beliveo.net/beliveo/bbox/wp-content/themes/BLANK-Theme/js/ang-hikers/img/hikers_generations.png"
   },
   {
     "name": "applications",
-    "img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/alps.jpg"
+    "img": "http://dev.beliveo.net/beliveo/bbox/wp-content/themes/BLANK-Theme/js/ang-hikers/img/hikers_applications.png"
   },
   {
 	"name": "assessments",
-	"img": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/elk.jpg"
+	"img": "http://dev.beliveo.net/beliveo/bbox/wp-content/themes/BLANK-Theme/js/ang-hikers/img/hikers_generations.png"
   }
 ]
