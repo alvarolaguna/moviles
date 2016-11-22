@@ -16,6 +16,18 @@
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"],
 			"completed": true
+                },
+	 	{
+                    "phase": "asmt",
+                    "questions": ["how good are you?","do you like dogs?"],
+                    "answers": ["good enough","yes"],
+			"completed": false
+                },
+                {
+                    "phase": "bc",
+                    "questions": ["how tall?","do you like rockets?"],
+                    "answers": ["tall enough","maybe"],
+			"completed": false
                 }
             ]
 	},
@@ -36,6 +48,18 @@
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"],
 			"completed": true
+                },
+		{
+                    "phase": "asmt",
+                    "questions": ["how good are you?","do you like dogs?"],
+                    "answers": ["good enough","yes"],
+			"completed": false
+                },
+                {
+                    "phase": "bc",
+                    "questions": ["how tall?","do you like rockets?"],
+                    "answers": ["tall enough","maybe"],
+			"completed": false
                 }
             ]
 	},
@@ -56,6 +80,18 @@
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"],
 			"completed": true
+                },
+		{
+                    "phase": "asmt",
+                    "questions": ["how good are you?","do you like dogs?"],
+                    "answers": ["good enough","yes"],
+			"completed": false
+                },
+                {
+                    "phase": "bc",
+                    "questions": ["how tall?","do you like rockets?"],
+                    "answers": ["tall enough","maybe"],
+			"completed": false
                 }
             ]
 	},
@@ -76,6 +112,18 @@
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"],
 			"completed": true
+                },
+		{
+                    "phase": "asmt",
+                    "questions": ["how good are you?","do you like dogs?"],
+                    "answers": ["good enough","yes"],
+			"completed": false
+                },
+                {
+                    "phase": "bc",
+                    "questions": ["how tall?","do you like rockets?"],
+                    "answers": ["tall enough","maybe"],
+			"completed": false
                 }
             ]
 	}
