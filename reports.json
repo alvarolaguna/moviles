@@ -1,26 +1,74 @@
 [
 	{
-		"id": 0,
+	"id": 0,
         "name": "Juan",
         "appDate": 1420816800000,
-		"url": "https://pbs.twimg.com/profile_images/731449492780646400/X0FNbdJD.jpg"
+	"url": "https://pbs.twimg.com/profile_images/731449492780646400/X0FNbdJD.jpg",
+	"steps": [
+                {
+                    "phase": 'survey',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                },
+                {
+                    "phase": 'schedule',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                }
+            ]
 	},
 	{
 		"id": 1,
         "name": "Maria",
         "appDate": 1310669017,
-		"url": "http://wisconsindailyindependent.com/wp-content/uploads/2014/12/gray-wolf.png"
+		"url": "http://wisconsindailyindependent.com/wp-content/uploads/2014/12/gray-wolf.png",
+			"steps": [
+                {
+                    "phase": 'survey',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                },
+                {
+                    "phase": 'schedule',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                }
+            ]
 	},
 	{
 		"id": 2,
         "name": "Roberto",
         "appDate": 1310669017,
-		"url": "http://images.forbes.com/media/2010/02/16/0216_siberian-tiger_400x400.jpg"
+		"url": "http://images.forbes.com/media/2010/02/16/0216_siberian-tiger_400x400.jpg",
+			"steps": [
+                {
+                    "phase": 'survey',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                },
+                {
+                    "phase": 'schedule',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                }
+            ]
 	},
 	{
 		"id": 3,
         "name": "Mariana",
         "appDate": 1310669017,
-		"url":"https://pbs.twimg.com/profile_images/2218381869/purple_butterfly_400x400.jpg"
+		"url":"https://pbs.twimg.com/profile_images/2218381869/purple_butterfly_400x400.jpg",
+			"steps": [
+                {
+                    "phase": 'survey',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                },
+                {
+                    "phase": 'schedule',
+                    "questions": ['how good are you?','do you like dogs?'],
+                    "answers": ['good enough','yes']  
+                }
+            ]
 	}
 ]
