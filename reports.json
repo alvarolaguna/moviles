@@ -11,7 +11,7 @@
                     "answers": ["good enough","yes"]  
                 },
                 {
-                    "phase": 'schedule',
+                    "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"]  
                 }
@@ -29,7 +29,7 @@
                     "answers": ["good enough","yes"]  
                 },
                 {
-                    "phase": 'schedule',
+                    "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"]  
                 }
@@ -47,7 +47,7 @@
                     "answers": ["good enough","yes"]  
                 },
                 {
-                    "phase": 'schedule',
+                    "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"]  
                 }
@@ -65,7 +65,7 @@
                     "answers": ["good enough","yes"]  
                 },
                 {
-                    "phase": 'schedule',
+                    "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
                     "answers": ["tall enough","maybe"]  
                 }
