@@ -8,12 +8,14 @@
                 {
                     "phase": "survey",
                     "questions": ["how good are you?","do you like dogs?"],
-                    "answers": ["good enough","yes"]  
+                    "answers": ["good enough","yes"],
+			"completed": true
                 },
                 {
                     "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
-                    "answers": ["tall enough","maybe"]  
+                    "answers": ["tall enough","maybe"],
+			"completed": true
                 }
             ]
 	},
@@ -26,12 +28,14 @@
                 {
 			"phase": "survey",
                     "questions": ["how good are you?","do you like dogs?"],
-                    "answers": ["good enough","yes"]  
+                    "answers": ["good enough","yes"],
+			"completed": true
                 },
                 {
                     "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
-                    "answers": ["tall enough","maybe"]  
+                    "answers": ["tall enough","maybe"],
+			"completed": true
                 }
             ]
 	},
@@ -44,12 +48,14 @@
                 {
 		     "phase": "survey",
                     "questions": ["how good are you?","do you like dogs?"],
-                    "answers": ["good enough","yes"]  
+                    "answers": ["good enough","yes"],
+			"completed": true
                 },
                 {
                     "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
-                    "answers": ["tall enough","maybe"]  
+                    "answers": ["tall enough","maybe"],
+			"completed": true
                 }
             ]
 	},
@@ -62,12 +68,14 @@
                 {
                     "phase": "survey",
                     "questions": ["how good are you?","do you like dogs?"],
-                    "answers": ["good enough","yes"]  
+                    "answers": ["good enough","yes"],
+			"completed": true
                 },
                 {
                     "phase": "schedule",
                     "questions": ["how tall?","do you like rockets?"],
-                    "answers": ["tall enough","maybe"]  
+                    "answers": ["tall enough","maybe"],
+			"completed": true
                 }
             ]
 	}
